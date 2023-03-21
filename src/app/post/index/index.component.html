@@ -1,0 +1,32 @@
+<div class="container">
+    <h1>Angular 14 CRUD Example - ItSolutionStuff.com</h1>
+    
+    <a href="#" routerLink="/post/create/" class="btn btn-success">Create New Post</a>
+      
+    <table class="table table-striped">
+        <thead>
+              <tr>
+                <th>Camera Id</th>
+                <th>Camera Name</th>
+                <th>Latitude</th>
+                <th>Longitude</th>
+                <th>Pole Id</th>
+              </tr>
+        </thead>
+        <tbody>
+              <tr *ngFor="let post of posts">
+                <td>{{ post.idcamera }}</td>
+                <td>{{ post.cameraName }}</td>
+                <td>{{ post.lat }}</td>
+                <td>{{ post.longit }}</td>
+                <td>{{ post.poleId }}</td>
+                <td>
+                  <a style="margin-right: 10px;" href="#" [routerLink]="['/post/', post.idcamera, 'view']" class="btn btn-info">View</a>
+                  <a style="margin-right: 10px;"href="#" [routerLink]="['/post/', post.idcamera, 'edit']" class="btn btn-primary">Edit</a>
+                  
+                  <button type="button" (click)="deletePost(post.idcamera)" class="btn btn-danger">Delete</button>
+                </td>
+              </tr>
+        </tbody>
+    </table>
+ </div>

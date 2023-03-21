@@ -1,0 +1,60 @@
+<div class="container">
+    <h1>Create New Post</h1>
+  
+    <a href="#" routerLink="/post/index" class="btn btn-primary">Back</a>
+        
+    <form [formGroup]="formCam" (ngSubmit)="submit()">
+  
+        <div class="form-group">
+            <label for="cameraName">cameraName:</label>
+            <input 
+                formControlName="cameraName"
+                id="cameraName" 
+                type="text" 
+                class="form-control">
+            <div *ngIf="f['cameraName'].touched && f['cameraName'].invalid" class="alert alert-danger">
+                <div *ngIf="f['cameraName'].errors && f['cameraName'].errors['required']">cameraName is required.</div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="lat">lat:</label>
+            <input 
+                formControlName="lat"
+                id="lat" 
+                type="text" 
+                class="form-control">
+            <div *ngIf="f['lat'].touched && f['lat'].invalid" class="alert alert-danger">
+                <div *ngIf="f['lat'].errors && f['lat'].errors['required']">lat is required.</div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="longit">longit:</label>
+            <input 
+                formControlName="longit"
+                id="longit" 
+                type="text" 
+                class="form-control">
+            <div *ngIf="f['longit'].touched && f['longit'].invalid" class="alert alert-danger">
+                <div *ngIf="f['longit'].errors && f['longit'].errors['required']">longit is required.</div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="poleId">poleId:</label>
+            <input 
+                formControlName="poleId"
+                id="poleId" 
+                type="text" 
+                class="form-control">
+            <div *ngIf="f['poleId'].touched && f['poleId'].invalid" class="alert alert-danger">
+                <div *ngIf="f['poleId'].errors && f['poleId'].errors['required']">poleId is required.</div>
+            </div>
+        </div>
+  
+       
+  
+        <button class="btn btn-primary" type="submit" [disabled]="!formCam.valid">Submit</button>
+    </form>
+</div>
