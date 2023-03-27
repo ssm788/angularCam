@@ -12,7 +12,7 @@ export class PostService {
 
   
  // private apiURL = "https://jsonplaceholder.typicode.com";
-  private apiURL = "http://localhost:8080/api";
+  private apiURL = "http://localhost:8080/api/v1/auth";
   
     
   /*------------------------------------------
@@ -20,12 +20,15 @@ export class PostService {
   Http Header Options
   --------------------------------------------
   --------------------------------------------*/
-  httpOptions = {
-    headers: new HttpHeaders({
-      'Content-Type': 'application/json',
-      'Access-Control-Allow-Origin': '*'
-    })
-  }
+  
+ 
+  // httpOptions = {
+  //   headers: new HttpHeaders({
+  //     'Content-Type': 'application/json',
+  //     'Access-Control-Allow-Origin': '*',
+  //     'Authorization': localStorage.getItem('token')+""
+  //   })
+  // }
    
   /*------------------------------------------
   --------------------------------------------
@@ -40,8 +43,15 @@ export class PostService {
    * @return response()
    */
   getAll(): Observable<any> {
-  
-    return this.httpClient.get(this.apiURL + '/camera')
+   
+   let httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': '*',
+        'Authorization': localStorage.getItem('token')+""
+      })
+    }
+    return this.httpClient.get(this.apiURL + '/camera',httpOptions)
   
     .pipe(
       catchError(this.errorHandler)
@@ -54,9 +64,15 @@ export class PostService {
    * @return response()
    */
   create(post:any): Observable<any> {
-  
+    let httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': '*',
+        'Authorization': localStorage.getItem('token')+""
+      })
+    }
      //return this.httpClient.post(this.apiURL + '/camera/', JSON.stringify(post), this.httpOptions)
-    return this.httpClient.post(this.apiURL + '/camera', post)
+    return this.httpClient.post(this.apiURL + '/camera', post,httpOptions)
   
     .pipe(
       catchError(this.errorHandler)
@@ -69,8 +85,14 @@ export class PostService {
    * @return response()
    */
   find(id:number): Observable<any> {
-  
-    return this.httpClient.get(this.apiURL + '/camera/' + id)
+    let httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': '*',
+        'Authorization': localStorage.getItem('token')+""
+      })
+    }
+    return this.httpClient.get(this.apiURL + '/camera/' + id,httpOptions)
   
     .pipe(
       catchError(this.errorHandler)
@@ -82,9 +104,15 @@ export class PostService {
    *
    * @return response()
    */
-  update(id:number, post:Post): Observable<any> {
-  
-    return this.httpClient.put(this.apiURL + '/posts/' + id, JSON.stringify(post), this.httpOptions)
+  update(id:number, post:any): Observable<any> {
+    let httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': '*',
+        'Authorization': localStorage.getItem('token')+""
+      })
+    }
+    return this.httpClient.put(this.apiURL + '/camera/' + id, post,httpOptions)
  
     .pipe( 
       catchError(this.errorHandler)
@@ -97,7 +125,15 @@ export class PostService {
    * @return response()
    */
   delete(id:number){
-    return this.httpClient.delete(this.apiURL + '/posts/' + id, this.httpOptions)
+
+    let httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': '*',
+        'Authorization': localStorage.getItem('token')+""
+      })
+    }
+    return this.httpClient.delete(this.apiURL + '/camera/' + id,httpOptions)
   
     .pipe(
       catchError(this.errorHandler)

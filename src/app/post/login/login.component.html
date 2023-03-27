@@ -1,0 +1,38 @@
+<div class="card">
+    <h4 class="card-header">Login</h4>
+    <div class="card-body">
+        <form [formGroup]="form" (ngSubmit)="submit()">
+  
+            <div class="form-group">
+                <label for="email">email:</label>
+                <input 
+                    formControlName="email"
+                    id="email" 
+                    type="text" 
+                    class="form-control">
+                <div *ngIf="f['email'].touched && f['email'].invalid" class="alert alert-danger">
+                    <div *ngIf="f['email'].errors && f['email'].errors['required']">email is required.</div>
+                </div>
+            </div>
+    
+            <div class="form-group">
+                <label for="password">password:</label>
+                <input 
+                    formControlName="password"
+                    id="password" 
+                    type="text" 
+                    class="form-control">
+                <div *ngIf="f['password'].touched && f['password'].invalid" class="alert alert-danger">
+                    <div *ngIf="f['password'].errors && f['password'].errors['required']">password is required.</div>
+                </div>
+            </div>
+    
+           
+           
+      
+           
+      
+            <button class="btn btn-primary" type="submit" [disabled]="!form.valid">Submit</button>
+        </form>
+    </div>
+</div>

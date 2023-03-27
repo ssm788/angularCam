@@ -7,9 +7,10 @@ import { CreateComponent } from './create/create.component';
 import { EditComponent } from './edit/edit.component';
   
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-  
+import { LoginComponent } from './login/login.component';
+ 
 @NgModule({
-  declarations: [IndexComponent, ViewComponent, CreateComponent, EditComponent],
+  declarations: [IndexComponent, ViewComponent, CreateComponent, EditComponent, LoginComponent],
   imports: [
     CommonModule,
     PostRoutingModule,
